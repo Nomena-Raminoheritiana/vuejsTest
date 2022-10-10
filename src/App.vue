@@ -84,7 +84,7 @@
   }
   .anime-scale-in:hover {
     transform: scale(1.2);
-    transition: all 0.5s;
+    transition: all 0.4s ease-in;
     box-shadow: 0px 0px 10px #282828;
     z-index:10
   }
