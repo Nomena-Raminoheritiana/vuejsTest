@@ -117,7 +117,7 @@ export default {
   },
   methods: {
     addUser() {
-        this.user.id = this.users.slice(-1)[0].id + 1
+        this.user.id = this.users.length > 0 ? this.users.slice(-1)[0].id + 1 : 1
         this.users = [...this.users, this.user]
         this.user = userInitialState
         this.update = false
