@@ -3,6 +3,7 @@
 
 <template>
   <div class="container ">
+    <h1 class="text-center anime-rotate mt-4">Test Animation & <span >Vuejs</span></h1>
     <div class="row">
       <div class="col-md-4 mt-5 " v-for="user in users">
         <div class="card anime-scale-in">
@@ -22,6 +23,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="mt-4">
+      <h2>Formulaire utilisateur</h2>
     </div>
   </div>
 
@@ -49,6 +53,9 @@
     transition: all 0.5s;
     box-shadow: 0px 0px 10px #282828;
     z-index:10
+  }
+  .anime-rotate {
+    animation: combine-trans-rotate 2s infinite;
   }
 </style>
 <script>

@@ -10,3 +10,15 @@
     }
 }
 
+@keyframes combine-trans-rotate {
+    0% {
+        transform: rotateX(0);
+    }
+    25% {
+        transform: rotateX(45deg);
+    }
+    50% {
+        transform: rotateX(90deg)
+    }
+
+}
