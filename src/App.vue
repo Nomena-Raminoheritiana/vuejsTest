@@ -4,8 +4,8 @@
 <template>
   <div class="container ">
     <div class="row">
-      <div class="col-md-4 mt-5" v-for="user in users">
-        <div class="card">
+      <div class="col-md-4 mt-5 " v-for="user in users">
+        <div class="card anime-scale-in">
           <div class="card-header">
             <small class="text-uppercase fw-bold">{{ user.nom }}</small>
             <small class="text-capitalize ms-1 fst-italic">{{user.prenom}}</small>
@@ -14,7 +14,7 @@
             <div>{{ user.biographie }}</div>
             <div class="mt-4">
               <a href="#" class="btn btn-primary btn-sm">Modifier</a>
-              <a href="#" class="btn btn-danger btn-sm ms-2">Supprimer</a>
+              <a href="#" class="btn btn-danger btn-sm ms-2 anime-speed">Supprimer</a>
             </div>
           </div>
           <div class="card-footer text-muted">
@@ -41,7 +41,15 @@
 </template>
 
 <style scoped>
-
+  .anime-speed:hover {
+    animation: speedMove 0.5s infinite;
+  }
+  .anime-scale-in:hover {
+    transform: scale(1.2);
+    transition: all 0.5s;
+    box-shadow: 0px 0px 10px #282828;
+    z-index:10
+  }
 </style>
 <script>
 export default {
@@ -122,7 +130,7 @@ export default {
   // `mounted` is a lifecycle hook which we will explain later
   mounted() {
     // `this` refers to the component instance.
-    console.log(this.count) // => 1
+    console.log(this) // => 1
 
     // data can be mutated as well
     this.count = 2

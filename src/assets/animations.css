@@ -1,0 +1,12 @@
+@keyframes speedMove {
+    0% {
+        transform: translateX(15px);
+    }
+    50% {
+        transform: translateX(-15px);
+    }
+    100% {
+        transform: translateX(15px);
+    }
+}
+
