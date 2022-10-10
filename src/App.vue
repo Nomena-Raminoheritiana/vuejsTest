@@ -144,6 +144,7 @@ export default {
     },
     initUserState() {
       this.user = {...userInitialState}
+      this.update = false
     }
   },
 
