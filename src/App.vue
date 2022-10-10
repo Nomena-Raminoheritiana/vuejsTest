@@ -7,7 +7,9 @@
     <button class="btn btn-primary scale-hover"
             id="btn-modal-user"
             data-bs-toggle="modal"
-            data-bs-target="#modal-add">Ajouter un utilisateur</button>
+            data-bs-target="#modal-add"
+            @click="initUserState()"
+      >Ajouter un utilisateur</button>
     <!-- Modal d'ajout -->
     <div class="modal fade" id="modal-add" tabindex="-1" aria-labelledby="ajoutUtilisateur" aria-hidden="true">
       <div class="modal-dialog">
@@ -123,10 +125,10 @@ export default {
     },
     updateUser(user, submit = false) {
       if(!submit) {
+        openUserFormModal()
         let userFounded = this.users.find(userI => userI.id === user.id);
         this.user = {...userFounded}
         this.update = true
-        openUserFormModal()
       } else {
         this.users = this.users.map((userA) => {
           if (userA.id === user.id) {
@@ -139,6 +141,9 @@ export default {
     },
     deleteUser(id) {
       this.users = this.users.filter((user) => user.id !== id)
+    },
+    initUserState() {
+      this.user = {...userInitialState}
     }
   },
 
