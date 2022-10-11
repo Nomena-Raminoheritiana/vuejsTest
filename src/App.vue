@@ -2,7 +2,9 @@
 import ListUsers from './components/ListUsers.vue'
 import UserForm from './components/UserForm.vue'
 import Loading from './components/Loading.vue'
+import ObjectReactiveExample from './components/ObjectReactiveExample.vue'
 import {userInitialState} from './components/constants/initialState'
+import GreenSock from "./components/GreenSock.vue";
 </script>
 
 <template>
@@ -15,10 +17,12 @@ import {userInitialState} from './components/constants/initialState'
             @click="initUserState()"
       >Ajouter un utilisateur</button>
     <UserForm :user="user" :update="update" @addUser="addUser" @updateUser="updateUser"/>
+    <ObjectReactiveExample :users="users" />
     <div class="row">
       <Loading v-if="loading" />
       <ListUsers v-if="!loading" v-bind:users="users" @suppression_user="deleteUser" @modification_user="updateUser"/>
     </div>
+    <GreenSock />
   </div>
 </template>
 

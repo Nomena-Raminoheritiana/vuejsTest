@@ -1,10 +1,12 @@
 <script setup>
+import ObjectReactiveExample from "./ObjectReactiveExample.vue";
+
 defineProps({
   users: Array
 })
 </script>
 <template>
-  <div class="col-md-4 mt-5 anime-on-mount" v-for="user in users">
+  <div class="col-md-4 mt-4 anime-on-mount" v-for="user in users">
     <div class="card anime-scale-in">
       <div class="card-header">
         <small class="text-uppercase fw-bold">{{ user.nom }}</small>
