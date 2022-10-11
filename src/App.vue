@@ -1,4 +1,7 @@
 <script setup>
+import ListUsers from './components/ListUsers.vue'
+import UserForm from './components/UserForm.vue'
+import {userInitialState} from './components/constants/initialState'
 </script>
 
 <template>
@@ -10,58 +13,9 @@
             data-bs-target="#modal-add"
             @click="initUserState()"
       >Ajouter un utilisateur</button>
-    <!-- Modal d'ajout -->
-    <div class="modal fade" id="modal-add" tabindex="-1" aria-labelledby="ajoutUtilisateur" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Formulaire d'un utilisateur </h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="row">
-                <div class="col-md-6">
-                  <input type="text" class="form-control" placeholder="Entrer le nom" v-model="user.nom">
-                </div>
-                <div class="col-md-6">
-                  <input type="text" class="form-control" placeholder="Entrer le prénom"  v-model="user.prenom">
-                </div>
-              </div>
-              <div class="mt-3">
-                <input type="email" class="form-control" placeholder="exemple@gmail.com"  v-model="user.mail">
-              </div>
-              <div class="mt-3">
-                <textarea class="form-control" rows="14" placeholder="Ajouter une biographie"  v-model="user.biographie"></textarea>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" id="close-modal" data-bs-dismiss="modal">Fermer</button>
-            <button type="button" class="btn btn-primary" @click="update ? updateUser(user, true) : addUser()">Enregistrer</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <UserForm :user="user" :update="update" @addUser="addUser" @updateUser="updateUser"/>
     <div class="row">
-      <div class="col-md-4 mt-5 " v-for="user in users">
-        <div class="card anime-scale-in">
-          <div class="card-header">
-            <small class="text-uppercase fw-bold">{{ user.nom }}</small>
-            <small class="text-capitalize ms-1 fst-italic">{{user.prenom}}</small>
-          </div>
-          <div class="card-body">
-            <div>{{ user.biographie }}</div>
-            <div class="mt-4">
-              <a href="#" class="btn btn-primary btn-sm" @click="updateUser(user)">Modifier</a>
-              <a href="#" @click="deleteUser(user.id)" class="btn btn-danger btn-sm ms-2 anime-speed">Supprimer</a>
-            </div>
-          </div>
-          <div class="card-footer text-muted">
-            Contact : {{ user.mail }}
-          </div>
-        </div>
-      </div>
+     <ListUsers v-bind:users="users" @suppression_user="deleteUser" @modification_user="updateUser"/>
     </div>
   </div>
 
@@ -81,15 +35,6 @@
 </template>
 
 <style scoped>
-  .anime-speed:hover {
-    animation: speedMove 0.5s infinite;
-  }
-  .anime-scale-in:hover {
-    transform: scale(1.2);
-    transition: all 0.4s ease-in;
-    box-shadow: 0px 0px 10px #282828;
-    z-index:10
-  }
   .anime-rotate {
     animation: combine-trans-rotate 2s infinite;
   }
@@ -99,14 +44,6 @@
   }
 </style>
 <script>
-const userInitialState = {
-  id: null,
-  nom: '',
-  prenom: '',
-  mail: '',
-  biographie: '',
-  isActive: false,
-}
 export default {
   data() {
     return {
@@ -139,8 +76,8 @@ export default {
         closeUserFormModal()
       }
     },
-    deleteUser(id) {
-      this.users = this.users.filter((user) => user.id !== id)
+    deleteUser(userPayload) {
+      this.users = this.users.filter((user) => user.id !== userPayload.id)
     },
     initUserState() {
       this.user = {...userInitialState}
