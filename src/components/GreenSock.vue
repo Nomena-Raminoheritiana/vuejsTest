@@ -2,9 +2,9 @@
   <div class="green-sock-container mt-4 mb-5 bg-light p-4 border">
     <h2>GreenSocks Animation</h2>
     <hr>
+    <h5 class="text-muted">Cliquer les box</h5>
     <div class="row mt-4">
       <div class="col-md-4">
-        <h5 class="text-muted">Cliquer le box vert</h5>
         <small>Translation gauche - droite</small><br>
         <small class="text-primary"> <i><u>gsap.to('.box1', {  x: 200 })</u></i></small>
         <div class="box-green-container">
@@ -12,7 +12,6 @@
         </div>
       </div>
       <div class="col-md-4">
-        <h5 class="text-muted">Cliquer le box rouge</h5>
         <small>Translation gauche - droite</small>
         <br>
         <small class="text-primary">
@@ -27,7 +26,6 @@
         </div>
       </div>
       <div class="col-md-4">
-        <h5 class="text-muted">Cliquer l'un des box</h5>
         <small>Translation gauche - droite</small>
         <br>
         <small class="text-primary">
@@ -64,10 +62,37 @@
         </div>
       </div>
       <div class="col-md-4">
-
+        <div class="mt-5">
+          <small>Translation + rotation + transformOrigin + changement couleur</small>
+          <br>
+          <small class="text-primary">
+            <i>
+              <u>
+                gsap.to('.box4', {
+                x: 200,
+                rotation: 360,
+                duration: 2,
+                transformOrigin: "top left"
+                })
+              </u>
+            </i>
+          </small>
+          <div class="box box5 secondary mt-4" @click="animerBox5" id="carer" ></div>
+        </div>
       </div>
       <div class="col-md-4">
+        <div class="mt-5">
+          <small>Traçage position (x : {{ box6Data.x }})</small>
+          <br>
+          <small class="text-primary">
+            <i>
+              <u>
 
+              </u>
+            </i>
+          </small>
+          <div class="box box6 bg-warning mt-4" @click="animerBox6" id="carer" ></div>
+        </div>
       </div>
     </div>
   </div>
@@ -94,6 +119,9 @@
   .red {
     background: red
   }
+  .secondary {
+    background: darkgray;
+  }
 </style>
 <script>
   import {gsap} from 'gsap'
@@ -104,7 +132,12 @@
         boxVert: true,
         boxRouge: true,
         boxDouble: true,
-        box4: true
+        box4: true,
+        box5: true,
+        box6: true,
+        box6Data : {
+          x : 0
+        }
       }
     },
     methods: {
@@ -138,6 +171,36 @@
           rotation: rotation,
           duration: 2,
         })
+      },
+      animerBox5() {
+        const x = this.box5 ? 200 : 0
+        const rotation = this.box5 ? 360 : -360
+        this.box5 = !this.box5
+        gsap.to('.box5', {
+          x: x,
+          rotation: rotation,
+          duration: 2,
+          transformOrigin: "top left",
+          backgroundColor: '#8d3dae',
+        })
+      }
+      ,
+      animerBox6() {
+        const x = this.box6 ? 200 : 0
+        let coordonee = { axeX : this.box6 ? 0 : 200 }
+        this.box6 = !this.box6
+        gsap.to('.box6', {
+          x: x,
+          duration: 5,
+        })
+        gsap.to(coordonee, {
+          axeX: x,
+          duration: 5,
+          onUpdate: () => {
+            this.box6Data.x = coordonee.axeX
+          }
+        })
+
       }
     }
     ,
