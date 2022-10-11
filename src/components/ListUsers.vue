@@ -4,7 +4,7 @@ defineProps({
 })
 </script>
 <template>
-  <div class="col-md-4 mt-5 " v-for="user in users">
+  <div class="col-md-4 mt-5 anime-on-mount" v-for="user in users">
     <div class="card anime-scale-in">
       <div class="card-header">
         <small class="text-uppercase fw-bold">{{ user.nom }}</small>
@@ -32,6 +32,9 @@ defineProps({
   transition: all 0.4s ease-in;
   box-shadow: 0px 0px 10px #282828;
   z-index:10
+}
+.anime-on-mount {
+  animation: smoothUp 0.5s
 }
 </style>
 <script>
