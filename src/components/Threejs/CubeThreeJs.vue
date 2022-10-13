@@ -1,6 +1,7 @@
 <script setup>
 import * as THREE from 'three';
 import {onMounted} from "vue";
+import {OrbitControls} from "three/addons/controls/OrbitControls";
 
 
 onMounted(() => {
@@ -26,11 +27,17 @@ onMounted(() => {
   const cube = new THREE.Mesh( geometry, material );
   scene.add( cube );
 
+  // controllons le camera
+  let control = new OrbitControls(camera, renderer.domElement)
+  control.update()
+
+
   const animate = () => {
     // créera une boucle qui animera notre cube à l'infini
     requestAnimationFrame( animate );
     cube.rotation.x += 0.01;
     cube.rotation.y += 0.01;
+    // controls.update();
     renderer.render( scene, camera );
   }
   animate()
@@ -61,7 +68,10 @@ onMounted(() => {
 <template>
   <h6>Cube 3D</h6>
   <div class="threeJs position-relative" id="threeJs">
-    <h2 class="position-absolute  text-light zIndex-10" id="text-threeJS">Texte au dessus</h2>
+    <h6 class="position-absolute  text-light zIndex-10" id="text-threeJS">
+      Fonctionnalité plus OrbitControls pour parcourrir déplacer la caméra
+      - manipuler via souris
+    </h6>
   </div>
 </template>
 
