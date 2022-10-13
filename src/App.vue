@@ -1,15 +1,18 @@
 <script setup>
-import ListUsers from './components/ListUsers.vue'
-import UserForm from './components/UserForm.vue'
+import ListUsers from './components/Users/ListUsers.vue'
+import UserForm from './components/Users/UserForm.vue'
 import Loading from './components/Loading.vue'
-import ObjectReactiveExample from './components/ObjectReactiveExample.vue'
+import ObjectReactiveExample from './components/Vuejs/ObjectReactiveExample.vue'
 import {userInitialState} from './components/constants/initialState'
-import GreenSock from "./components/GreenSock.vue";
+import GreenSock from "./components/GreenSock/GreenSock.vue";
+import ObjectRefExample from "./components/Vuejs/ObjectRefExample.vue";
+import ThreeJsComponent from "@/components/Threejs/ThreeJsComponent.vue";
 </script>
 
 <template>
   <div class="container ">
     <h1 class="text-center anime-rotate mt-4">Test Animation & <span >Vuejs</span></h1>
+    <ThreeJsComponent />
     <button class="btn btn-primary scale-hover"
             id="btn-modal-user"
             data-bs-toggle="modal"
@@ -17,10 +20,17 @@ import GreenSock from "./components/GreenSock.vue";
             @click="initUserState()"
       >Ajouter un utilisateur</button>
     <UserForm :user="user" :update="update" @addUser="addUser" @updateUser="updateUser"/>
-    <ObjectReactiveExample :users="users" />
     <div class="row">
       <Loading v-if="loading" />
       <ListUsers v-if="!loading" v-bind:users="users" @suppression_user="deleteUser" @modification_user="updateUser"/>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <ObjectReactiveExample :users="users" />
+      </div>
+      <div class="col-md-6">
+        <ObjectRefExample />
+      </div>
     </div>
     <GreenSock />
   </div>

@@ -1,5 +1,5 @@
 <script setup>
-import {nextTick, reactive} from "vue";
+import {nextTick, reactive, ref} from "vue";
 
 const state = reactive({
   count:0,
@@ -32,9 +32,9 @@ const updateObjetprofond = () => {
       2. Objet réctive (json profond) : <span class="text-muted">{{ state.objetProfond }}</span>
     </div>
     <div class="mt-4">
-      <button class="btn btn-sm border" @click="state.count = users.length">Cliquer ici pour actualiser le nombre des utilisateurs</button>
-      <button class="btn btn-sm ms-2 border" @click="increment">Cliquer ici pour incrémenter le chiffre</button>
-      <button class="btn btn-sm ms-2 border" @click="updateObjetprofond">Modifier le state 2. </button>
+      <button class="btn btn-sm mb-2 border" @click="state.count = users.length">Cliquer ici pour actualiser le nombre des utilisateurs</button><br>
+      <button class="btn btn-sm ms-0 mb-2 border" @click="increment">Cliquer ici pour incrémenter le chiffre</button><br>
+      <button class="btn btn-sm mb-2 border" @click="updateObjetprofond">Modifier le state 2. </button>
     </div>
 
   </div>

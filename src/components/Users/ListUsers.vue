@@ -1,5 +1,5 @@
 <script setup>
-import ObjectReactiveExample from "./ObjectReactiveExample.vue";
+import ObjectReactiveExample from "../Vuejs/ObjectReactiveExample.vue";
 
 defineProps({
   users: Array

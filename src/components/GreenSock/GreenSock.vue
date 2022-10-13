@@ -6,7 +6,8 @@
     <div class="row mt-4">
       <div class="col-md-4">
         <small>Translation gauche - droite</small><br>
-        <small class="text-primary"> <i><u>gsap.to('.box1', {  x: 200 })</u></i></small>
+        <small class="text-primary"> <i><u>gsap.to('.box1', {  x: 200, duration:1,
+          ease: "bounce.out" })</u></i></small>
         <div class="box-green-container">
           <div class="box box1 green" @click="animerBoxVert"></div>
         </div>
@@ -82,12 +83,19 @@
       </div>
       <div class="col-md-4">
         <div class="mt-5">
-          <small>Traçage position (x : {{ box6Data.x }})</small>
+          <small>Traçage position <span class="fw-bold">( x : {{ box6Data.x }} )</span></small>
           <br>
           <small class="text-primary">
             <i>
               <u>
-
+                let coordonee = { axeX : this.box6 ? 0 : 200 }<br>
+                gsap.to(coordonee, {
+                axeX: x,
+                duration: 5,
+                onUpdate: () => {
+                this.box6Data.x = coordonee.axeX
+                }
+                })
               </u>
             </i>
           </small>
@@ -146,7 +154,9 @@
         const x = this.boxVert ? 200 : 0
         this.boxVert = !this.boxVert
         gsap.to('.box1', {
-          x: x
+          x: x,
+          duration:1,
+          ease: "bounce.out"
         })
       },
       animerBoxRouge()
