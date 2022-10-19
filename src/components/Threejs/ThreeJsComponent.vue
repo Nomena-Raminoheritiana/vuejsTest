@@ -1,6 +1,7 @@
 <script setup>
 import CubeThreeJs from "@/components/Threejs/CubeThreeJs.vue";
 import EarthThreeJs from "@/components/Threejs/EarthThreeJs.vue";
+import Mercedes from "@/components/Threejs/Mercedes.vue";
 </script>
 
 <template>
@@ -8,5 +9,6 @@ import EarthThreeJs from "@/components/Threejs/EarthThreeJs.vue";
     <h2>ThreeJs Application + OrbitControl</h2>
     <CubeThreeJs />
     <EarthThreeJs />
+    <Mercedes />
   </div>
 </template>
