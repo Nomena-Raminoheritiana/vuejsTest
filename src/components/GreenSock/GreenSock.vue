@@ -103,6 +103,7 @@
         </div>
       </div>
     </div>
+    <Timeline />
   </div>
 </template>
 <style scoped>
@@ -133,8 +134,12 @@
 </style>
 <script>
   import {gsap} from 'gsap'
+  import Timeline from "@/components/GreenSock/Timeline.vue";
 
   export default {
+    components: {
+      Timeline
+    },
    data() {
       return {
         boxVert: true,
