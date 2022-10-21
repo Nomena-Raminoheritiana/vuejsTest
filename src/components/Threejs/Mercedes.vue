@@ -44,7 +44,7 @@
     camera.position.set(-1,0,0)
     control.rotateSpeed = 0.2
     control.enableZoom = false
-    // control.autoRotate = true
+    control.autoRotate = true
     control.update()
 
     function animate()

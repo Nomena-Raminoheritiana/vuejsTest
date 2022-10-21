@@ -104,6 +104,7 @@
       </div>
     </div>
     <Timeline />
+    <MercedesSequenceImage />
   </div>
 </template>
 <style scoped>
@@ -135,9 +136,11 @@
 <script>
   import {gsap} from 'gsap'
   import Timeline from "@/components/GreenSock/Timeline.vue";
+  import MercedesSequenceImage from "@/components/GreenSock/MercedesSequenceImage.vue";
 
   export default {
     components: {
+      MercedesSequenceImage,
       Timeline
     },
    data() {
